@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('inventory_id')->constrained()->onDelete('cascade');
             $table->string('type');
-            $table->string('path');
-            
+            $table->string('path');            
             $table->timestamps();
         });
     }
