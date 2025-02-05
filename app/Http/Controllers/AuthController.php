@@ -37,6 +37,7 @@ class AuthController extends Controller
     public function show_login_form() {
       return view('auth.login');
     }
+    
     public function login(Request $request) {
       $credentials = $request->validate([
         'email' => 'required|string|max:255',
