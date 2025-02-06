@@ -32,6 +32,7 @@ return new class extends Migration
             $table->json('cultural_assets')->nullable(); // Bens culturais relacionados
             $table->json('evaluations')->nullable(); // Pontos positivos e negativos do patrimônio
             $table->json('recommendations')->nullable(); // Recomendações para preservação
+            $table->timestamps();
         });
     }
 
