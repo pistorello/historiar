@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Inventory;
 
 require base_path('routes/inventory.php');
 require base_path('routes/login.php');
@@ -10,5 +11,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');    
+    $inventories = Inventory::all();
+
+    return view('dashboard', compact('inventories'));    
 });
