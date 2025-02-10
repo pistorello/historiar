@@ -13,12 +13,14 @@ class InventoriesController extends Controller
     }
 
     public function show_inventory_list() {
-        return view('inventories.inventory_list');
+        $inventories = Inventory::all();
+
+        return view('inventories.inventory_list', compact('inventories'));
     }
 
 
     // CRUD
-    public function list() {
+    public function list(Request $request) {
         $inventories = Inventory::all();
 
         return response()->json($inventories);
@@ -29,6 +31,7 @@ class InventoriesController extends Controller
             "name"                => 'required|string|max:255',
             "description"         => 'nullable|string',
             "category"            => 'required|string|max:255',
+            "sub_category"        => 'required|string|max:255',
             "location"            => 'nullable|string',
             "people_involved"     => 'nullable|json',
             "historical"          => 'nullable|json',
@@ -50,6 +53,7 @@ class InventoriesController extends Controller
             "name"                => $inventory['name'],
             "description"         => $inventory['description'] ?? null,
             "category"            => $inventory['category'],
+            "sub_category"        => $inventory['sub_category'],
             "location"            => $inventory['location'] ?? null,
             "people_involved"     => $inventory['people_involved'] ?? null,
             "historical"          => $inventory['historical'] ?? null,
@@ -67,10 +71,13 @@ class InventoriesController extends Controller
             "recommendations"     => $inventory['recommendations'] ?? null
         ]);
 
-        return response()->json([
-            "message" => "Inventário criado com sucesso!",
-            "inventory" => $inventory
-        ], 201);
+
+        response()->json([
+            'message' => 'Inventario criado com sucesso!',
+            'inventory' => $inventory
+        ]);
+
+        return redirect()->route('show_inventory_list');
     }
 
     public function update(Request $request, $id) {
@@ -78,6 +85,7 @@ class InventoriesController extends Controller
             "name"                => 'required|string|max:255',
             "description"         => 'nullable|string',
             "category"            => 'required|string|max:255',
+            "sub_category"        => 'required|string|max:255',
             "location"            => 'nullable|string',
             "people_involved"     => 'nullable|json',
             "historical"          => 'nullable|json',
@@ -99,10 +107,12 @@ class InventoriesController extends Controller
 
         $inventory->update($inventory_updated->all()); 
 
-        return response()->json([
-            'message' => 'Inventário atualizado com sucesso!',
+        response()->json([
+            'message' => 'Inventario atualizado com sucesso!',
             'inventory' => $inventory
         ]);
+
+        return redirect()->route('show_inventory_list');
     }
 
     public function delete(Request $request, $id) {
@@ -111,9 +121,11 @@ class InventoriesController extends Controller
 
         $inventory->delete();
 
-        return response()->json([
-            'message' => 'Inventário excluido com sucesso!',
+        response()->json([
+            'message' => 'Inventario excluido com sucesso!',
             'inventory' => $inventory
         ]);
+
+        return redirect()->route('show_inventory_list');
     }
 }

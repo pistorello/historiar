@@ -10,23 +10,31 @@
 <body>
     <div class="env">
         <div class="box">
-            <form method="POST" action="{{ route('create') }}">
+            <form action="{{ route('inventory.create') }}" method="POST">
                 @csrf
-                <div>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name">
-                    @error('name')
-                      <div>{{ $message }}</div>
-                    @enderror
+
+                <div class="">
+                    <label for="name" class="">Nome do Inventário</label>
+                    <input type="text" class="" id="name" name="name" required>
                 </div>
-                <div>
-                    <label for="category">Category:</label>
-                    <input type="text" id="category" name="category">
-                    @error('category')
-                      <div>{{ $message }}</div>
-                    @enderror
+
+                <div class="">
+                    <label for="category" class="">Categoria</label>
+                    <select class="" id="category" name="category" aria-placeholder="Selecione a categoria" required>                                         
+                        <option value="Material">Material</option>
+                        <option value="Não Material">Não Material</option>
+                    </select>    
                 </div>
-                <button type="submit">Salvar</button>
+
+                <div class="">
+                    <label for="sub_category" class="">Sub-Categoria</label>
+                    <input type="text" class="" id="sub_category" name="sub_category" required>
+                </div>
+
+                <button type="submit" class="">Salvar Inventário</button>
+                <a href="{{ route('show_inventory_list') }}" class="">
+                    <button>Voltar para Lista</button>
+                </a>
             </form>
         </div>        
     </div>    

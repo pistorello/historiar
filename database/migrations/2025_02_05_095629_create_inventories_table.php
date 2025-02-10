@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name'); // Nome atribuído ao patrimônio
             $table->text('description')->nullable(); // Descrição do patrimônio
-            $table->string('category'); // Categoria fixa (pode ser enum) 
+            $table->string('category'); // Categoria fixa - MATERIAL / NÃO-MATERIAL
+            $table->string('sub_category'); // Categorias adicionais - Local, Objeto, etc
             $table->string('location')->nullable(); // Localização do patrimônio
             $table->json('people_involved')->nullable(); // Histórico e transformações ao longo do tempo
             $table->json('historical')->nullable(); // Histórico e transformações ao longo do tempo
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->json('materials')->nullable(); // Materiais utilizados
             $table->json('techniques')->nullable(); // Modos de fazer e técnicas
             $table->json('products')->nullable(); // Principais produtos resultantes do saber
-            $table->json('attire')->nullable(); // Vestimentas vinculadas ao saber 
+            $table->json('attire')->nullable(); // Vestimentas vinculadas ao saber
             $table->json('expressions')->nullable(); // Corporais: Danças, encenações/ Orais: Musicas, Orações, etc  
             $table->json('objects')->nullable(); // Objetos utilizados
             $table->json('structure_resources')->nullable(); // Estruturas e recursos necessários

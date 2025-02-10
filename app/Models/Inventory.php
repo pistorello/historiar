@@ -13,6 +13,7 @@ class Inventory extends Model
         'name',
         'description',
         'category',
+        'sub_category',
         'location',
         'people_involved',
         'historical',
