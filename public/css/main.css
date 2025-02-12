@@ -1,9 +1,11 @@
+@import './palette.css';
+
 body {
   margin: 0;
   padding: 0;
 
-  background-color: rgb(43, 43, 43);
+  background-color: var(--back);
 
-  color: white;
+  color: var(--text);
   font-family: 'Consolas', monospace;
 }

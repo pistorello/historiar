@@ -5,7 +5,7 @@
     height: 100px;
     border-radius: 10px;
 
-    background-color: rgb(58, 58, 58);
+    background-color: var(--pri);
 
     display: flex;
     flex-direction: column;
@@ -13,7 +13,52 @@
     justify-content: center;
 }
 
-.card h3, .card h2 {
+.card.recent {    
+    height: 160px;
+}
+
+.tab-content {
+    margin: 0;
+}
+
+.tab-content h3, .tab-content h2 {
     margin: 5px 0;
     text-align: center;
+}
+
+.tab-dots {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.dot.active {
+    background-color: var(--text);
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    border: 2px solid var(--text);
+    border-radius: 50%;
+}
+
+.recent-items {
+    height: 100px;
+    overflow-y: auto;
+}
+
+.recent-items::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-items::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.recent-items::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--back) 70%, transparent);
+    opacity: 20;
+    border-radius: 10px;
 }
